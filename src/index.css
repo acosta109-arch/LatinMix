@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-latin-start: rgb(245, 150, 30);
+  --color-latin-end: rgb(255, 230, 50);
+  --color-mix-start: rgb(210, 40, 130);
+  --color-mix-end: rgb(120, 20, 150);
+  --color-radio-black: rgb(30, 30, 30);
+  --color-radio-gray: rgb(190, 190, 190);
+  --color-radio-red: rgb(230, 30, 30);
+  
+  --background-image-latin-gradient: linear-gradient(to right, var(--color-latin-start), var(--color-latin-end));
+  --background-image-mix-gradient: linear-gradient(to right, var(--color-mix-start), var(--color-mix-end));
+  --background-image-brand-gradient: linear-gradient(135deg, var(--color-latin-start), var(--color-mix-end));
+}
+
+@layer base {
+  body {
+    @apply bg-radio-black text-white font-sans antialiased;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient-latin {
+  background: var(--background-image-latin-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-mix {
+  background: var(--background-image-mix-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

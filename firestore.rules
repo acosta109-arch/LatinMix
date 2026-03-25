@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: settings
+    // Document ID: global
+    // Fields:
+    //   - azuraCastUrl: string (required)
+    //   - youtubeLiveId: string (required)
+    //   - facebookUrl: string (optional)
+    //   - instagramUrl: string (optional)
+    //   - tiktokUrl: string (optional)
+    //   - xUrl: string (optional)
+    //   - youtubeChannelUrl: string (optional)
+    //   - updatedAt: timestamp (optional)
+    //
+    // Collection: ads
+    // Document ID: auto-generated
+    // Fields:
+    //   - title: string (required)
+    //   - imageUrl: string (required)
+    //   - linkUrl: string (optional)
+    //   - active: boolean (required)
+    //   - createdAt: timestamp (optional)
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.email == "Admin@gmail.com" || 
+         request.auth.token.email == "camiloacostajairo5@gmail.com");
+    }
+
+    function isValidConfig(data) {
+      return data.keys().hasAll(['azuraCastUrl', 'youtubeLiveId']) &&
+             data.azuraCastUrl is string &&
+             data.youtubeLiveId is string;
+    }
+
+    function isValidAd(data) {
+      return data.keys().hasAll(['title', 'imageUrl', 'active']) &&
+             data.title is string && data.title.size() > 0 && data.title.size() < 100 &&
+             data.imageUrl is string && data.imageUrl.size() > 0 &&
+             data.active is bool;
+    }
+
+    // Settings
+    match /settings/global {
+      allow read: if true; // Publicly readable
+      allow write: if isAdmin() && isValidConfig(request.resource.data);
+    }
+
+    // Ads
+    match /ads/{adId} {
+      allow read: if true; // Publicly readable
+      allow write: if isAdmin() && isValidAd(request.resource.data);
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "Config": {
+      "title": "Config",
+      "description": "Global settings for the radio station",
+      "type": "object",
+      "properties": {
+        "azuraCastUrl": {
+          "type": "string",
+          "description": "The URL for the AzuraCast stream"
+        },
+        "youtubeLiveId": {
+          "type": "string",
+          "description": "The YouTube video ID for the live stream"
+        },
+        "facebookUrl": {
+          "type": "string",
+          "description": "Facebook profile URL"
+        },
+        "instagramUrl": {
+          "type": "string",
+          "description": "Instagram profile URL"
+        },
+        "tiktokUrl": {
+          "type": "string",
+          "description": "TikTok profile URL"
+        },
+        "xUrl": {
+          "type": "string",
+          "description": "X (formerly Twitter) profile URL"
+        },
+        "youtubeChannelUrl": {
+          "type": "string",
+          "description": "YouTube channel URL"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the config was last updated"
+        }
+      },
+      "required": ["azuraCastUrl", "youtubeLiveId"]
+    },
+    "Ad": {
+      "title": "Ad",
+      "description": "Advertisement banners",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier"
+        },
+        "title": {
+          "type": "string",
+          "description": "Ad title"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the ad image"
+        },
+        "linkUrl": {
+          "type": "string",
+          "description": "URL the ad points to"
+        },
+        "active": {
+          "type": "boolean",
+          "description": "Whether the ad is currently active"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the ad was created"
+        }
+      },
+      "required": ["title", "imageUrl", "active"]
+    }
+  },
+  "firestore": {
+    "/settings/global": {
+      "schema": "Config",
+      "description": "Global configuration settings"
+    },
+    "/ads/{adId}": {
+      "schema": "Ad",
+      "description": "Collection of advertisements"
+    }
+  }
+}
