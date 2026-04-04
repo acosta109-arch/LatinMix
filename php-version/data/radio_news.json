@@ -1,0 +1,19 @@
+[
+    {
+        "id": "1",
+        "title": "El auge de la música latina en el mundo",
+        "summary": "Artistas latinos dominan las listas globales de streaming este año, marcando un hito histórico en la industria.",
+        "image": "https:\/\/images.unsplash.com\/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-24",
+        "category": "Internacional",
+        "featured": true
+    },
+    {
+        "id": "3",
+        "title": "Colaboración histórica entre leyendas del reggaetón",
+        "summary": "Dos de los nombres más grandes del género anuncian un álbum conjunto que promete revolucionar el sonido urbano.",
+        "image": "https:\/\/images.unsplash.com\/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-22",
+        "category": "Internacional"
+    }
+]
