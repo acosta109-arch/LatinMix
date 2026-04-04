@@ -55,7 +55,7 @@ if ($current_cat !== 'Todas') {
                 <span class="gradient-text">LATIN MIX</span> <br> <span class="gradient-text">¡LA VOZ DE TODOS!</span>
             </h1>
             <p class="max-w-2xl mx-auto text-radio-gray text-sm md:text-xl mb-12 font-medium leading-relaxed px-4 italic">
-                latin mix, es la emisora favorita de los latinos con un balance musical e informativo que complace los mas exquisitos gustos de los oyentes
+                latin mix, es la emisora favorita de los latinos con un balance musical e informativo que complace los mas exquisitos gustos de los oyentes.
             </p>
             
         </div>
