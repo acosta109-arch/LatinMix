@@ -58,6 +58,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
     <meta name="description" content="<?php echo $site_description; ?>">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="<?php echo BASE_URL; ?>">
+    <link rel="icon" type="image/png" href="assets/logo.png">
     
     <!-- Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>

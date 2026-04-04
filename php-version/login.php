@@ -53,6 +53,7 @@ $bg_image = 'latin_musical_background_1774878126551.png';
     <title>Acceso Administrativo - LATIN MIX Radio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <style>
         body { 
             font-family: 'Outfit', sans-serif; 
