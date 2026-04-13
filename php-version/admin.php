@@ -236,18 +236,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         [x-cloak] { display: none !important; }
         
+        html, body {
+            height: 100%;
+            height: 100dvh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
         body { 
             font-family: 'Inter', sans-serif; 
             background-color: var(--bg-body); 
             color: #f3f4f6;
-            margin: 0;
-            overflow: hidden; /* Main scroll handled by content */
         }
 
         /* SaaS Layout Container */
         .app-container {
             display: flex;
-            height: 100vh;
+            height: 100%;
+            height: 100dvh;
             width: 100vw;
             overflow: hidden;
             position: relative;
@@ -312,7 +319,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         @media (max-width: 768px) {
             .content-scroller {
-                padding: 1.25rem;
+                padding: 1rem;
+                padding-bottom: 12rem; /* Espacio extra para asegurar scroll total */
             }
         }
 
@@ -1098,7 +1106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
 
-                    <div class="space-y-4 max-h-[1000px] overflow-y-auto pr-2 custom-scrollbar">
+                    <div class="space-y-4 pr-2 custom-scrollbar">
                         <template x-for="ad in adsList.filter(a => (filter === 'all' || (filter === 'active' ? a.active : !a.active)) && (a.title.toLowerCase().includes(searchTerm.toLowerCase())))" :key="ad.id">
                             <div x-transition class="flex flex-col md:flex-row items-center justify-between p-6 bg-white/[0.02] border border-white/5 rounded-[2.5rem] group hover:bg-white/[0.04] transition-all gap-6">
                                 <div class="flex flex-col md:flex-row items-center gap-6 w-full md:w-auto text-center md:text-left">
@@ -1191,7 +1199,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         options: [
                             { id: 'Nacional', label: 'NACIONAL', icon: 'bi-geo-alt-fill' },
                             { id: 'Internacional', label: 'INTERNACIONAL', icon: 'bi-globe-americas' },
-                            { id: 'Local', label: 'LOCAL', icon: 'bi-pin-map-fill' }
+                            { id: 'Local', label: 'LOCAL', icon: 'bi-pin-map-fill' },
+                            { id: 'Deportes', label: 'DEPORTES', icon: 'bi-trophy-fill' },
+                            { id: 'Arte y Cultura', label: 'ARTE Y CULTURA', icon: 'bi-palette-fill' }
                         ]
                     }">
                         <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Sección / Categoría</label>
@@ -1262,6 +1272,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div @click="newsFilter = 'Local'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
                                     <i class="bi bi-pin-map-fill text-green-400"></i>
                                     <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Local</span>
+                                </div>
+                                <div @click="newsFilter = 'Deportes'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
+                                    <i class="bi bi-trophy-fill text-orange-400"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Deportes</span>
+                                </div>
+                                <div @click="newsFilter = 'Arte y Cultura'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
+                                    <i class="bi bi-palette-fill text-purple-400"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Arte y Cultura</span>
                                 </div>
                             </div>
                         </div>
