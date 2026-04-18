@@ -30,7 +30,7 @@ function load_data($filename) {
  */
 function save_data($filename, $data) {
     // Intentar en MySQL si es configuración o compatible
-    if ($filename === 'radio_config') {
+    if (in_array($filename, ['radio_config', 'radio_news', 'radio_ads'])) {
         if (db_save_data($filename, $data)) return true;
     }
 

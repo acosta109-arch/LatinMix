@@ -50,17 +50,17 @@ if (!$current_news) {
                         <?php echo $current_news['summary']; ?>
                     </p>
                     
-                    <!-- Cuerpo de la noticia simulado (ya que en el JSON solo hay resumen por ahora) -->
+                    <!-- Cuerpo de la noticia -->
                     <div class="space-y-8 text-radio-gray">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <p>
+                            <?php echo $current_news['summary']; ?>
+                        </p>
                         
                         <blockquote class="bg-white/5 p-10 rounded-3xl border border-white/10 italic text-white text-2xl font-black tracking-tight leading-snug">
-                            "La música latina está viviendo su mejor momento histórico, rompiendo fronteras y uniendo corazones en todo el globo."
+                            "En Latin Mix, conectamos tus sentidos con la mejor información y el ritmo que define nuestra cultura."
                         </blockquote>
 
-                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        
-                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                        <p>Mantente en sintonía para más actualizaciones sobre <?php echo $current_news['category']; ?> y todo lo que sucede en el mundo de la música latina. En Latin Mix, somos ¡LA VOZ DE TODOS!</p>
                     </div>
 
                     <!-- Footer Noticia -->
@@ -68,9 +68,15 @@ if (!$current_news) {
                         <div class="flex items-center gap-4">
                             <span class="text-xs font-black uppercase tracking-widest text-white">Compartir:</span>
                             <div class="flex gap-2">
-                                <button class="w-10 h-10 rounded-xl glass hover:bg-latin-start/20 hover:text-latin-start transition-all flex items-center justify-center">FB</button>
-                                <button class="w-10 h-10 rounded-xl glass hover:bg-latin-start/20 hover:text-latin-start transition-all flex items-center justify-center">TW</button>
-                                <button class="w-10 h-10 rounded-xl glass hover:bg-latin-start/20 hover:text-latin-start transition-all flex items-center justify-center">WA</button>
+                                <button title="Compartir en Facebook" class="w-10 h-10 rounded-xl glass hover:bg-latin-start/20 hover:text-latin-start transition-all flex items-center justify-center">
+                                    <i class="bi bi-facebook text-lg"></i>
+                                </button>
+                                <button title="Compartir en X" class="w-10 h-10 rounded-xl glass hover:bg-latin-start/20 hover:text-latin-start transition-all flex items-center justify-center">
+                                    <i class="bi bi-twitter-x text-lg"></i>
+                                </button>
+                                <button title="Compartir en WhatsApp" class="w-10 h-10 rounded-xl glass hover:bg-latin-start/20 hover:text-latin-start transition-all flex items-center justify-center">
+                                    <i class="bi bi-whatsapp text-lg"></i>
+                                </button>
                             </div>
                         </div>
                         <p class="text-[10px] font-black uppercase tracking-widest text-radio-gray">Etiquetas: #LATINMIX #RADIO #MUSICA #ACTUALIDAD</p>

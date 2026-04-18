@@ -1,19 +1,227 @@
 [
     {
         "id": "1",
-        "title": "El auge de la música latina en el mundo",
-        "summary": "Artistas latinos dominan las listas globales de streaming este año, marcando un hito histórico en la industria.",
-        "image": "https:\/\/images.unsplash.com\/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
-        "date": "2026-03-24",
+        "title": "Noticia de Prueba #1 - Nacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 1. Contiene información relevante sobre Nacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-17",
+        "category": "Nacional",
+        "featured": true
+    },
+    {
+        "id": "2",
+        "title": "Noticia de Prueba #2 - Internacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 2. Contiene información relevante sobre Internacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1514525253361-bee8718a300a?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-16",
         "category": "Internacional",
         "featured": true
     },
     {
         "id": "3",
-        "title": "Colaboración histórica entre leyendas del reggaetón",
-        "summary": "Dos de los nombres más grandes del género anuncian un álbum conjunto que promete revolucionar el sonido urbano.",
+        "title": "Noticia de Prueba #3 - Deportes",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 3. Contiene información relevante sobre Deportes.",
+        "image": "https:\/\/images.unsplash.com\/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-15",
+        "category": "Deportes",
+        "featured": true
+    },
+    {
+        "id": "4",
+        "title": "Noticia de Prueba #4 - Arte y Cultura",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 4. Contiene información relevante sobre Arte y Cultura.",
+        "image": "https:\/\/images.unsplash.com\/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-14",
+        "category": "Arte y Cultura",
+        "featured": false
+    },
+    {
+        "id": "5",
+        "title": "Noticia de Prueba #5 - Local",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 5. Contiene información relevante sobre Local.",
+        "image": "https:\/\/images.unsplash.com\/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-13",
+        "category": "Local",
+        "featured": false
+    },
+    {
+        "id": "6",
+        "title": "Noticia de Prueba #6 - Nacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 6. Contiene información relevante sobre Nacional.",
         "image": "https:\/\/images.unsplash.com\/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
-        "date": "2026-03-22",
-        "category": "Internacional"
+        "date": "2026-04-12",
+        "category": "Nacional",
+        "featured": false
+    },
+    {
+        "id": "7",
+        "title": "Noticia de Prueba #7 - Internacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 7. Contiene información relevante sobre Internacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1514525253361-bee8718a300a?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-11",
+        "category": "Internacional",
+        "featured": false
+    },
+    {
+        "id": "8",
+        "title": "Noticia de Prueba #8 - Deportes",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 8. Contiene información relevante sobre Deportes.",
+        "image": "https:\/\/images.unsplash.com\/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-10",
+        "category": "Deportes",
+        "featured": false
+    },
+    {
+        "id": "9",
+        "title": "Noticia de Prueba #9 - Arte y Cultura",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 9. Contiene información relevante sobre Arte y Cultura.",
+        "image": "https:\/\/images.unsplash.com\/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-09",
+        "category": "Arte y Cultura",
+        "featured": false
+    },
+    {
+        "id": "10",
+        "title": "Noticia de Prueba #10 - Local",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 10. Contiene información relevante sobre Local.",
+        "image": "https:\/\/images.unsplash.com\/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-08",
+        "category": "Local",
+        "featured": false
+    },
+    {
+        "id": "11",
+        "title": "Noticia de Prueba #11 - Nacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 11. Contiene información relevante sobre Nacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-07",
+        "category": "Nacional",
+        "featured": false
+    },
+    {
+        "id": "12",
+        "title": "Noticia de Prueba #12 - Internacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 12. Contiene información relevante sobre Internacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1514525253361-bee8718a300a?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-06",
+        "category": "Internacional",
+        "featured": false
+    },
+    {
+        "id": "13",
+        "title": "Noticia de Prueba #13 - Deportes",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 13. Contiene información relevante sobre Deportes.",
+        "image": "https:\/\/images.unsplash.com\/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-05",
+        "category": "Deportes",
+        "featured": false
+    },
+    {
+        "id": "14",
+        "title": "Noticia de Prueba #14 - Arte y Cultura",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 14. Contiene información relevante sobre Arte y Cultura.",
+        "image": "https:\/\/images.unsplash.com\/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-04",
+        "category": "Arte y Cultura",
+        "featured": false
+    },
+    {
+        "id": "15",
+        "title": "Noticia de Prueba #15 - Local",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 15. Contiene información relevante sobre Local.",
+        "image": "https:\/\/images.unsplash.com\/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-03",
+        "category": "Local",
+        "featured": false
+    },
+    {
+        "id": "16",
+        "title": "Noticia de Prueba #16 - Nacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 16. Contiene información relevante sobre Nacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-02",
+        "category": "Nacional",
+        "featured": false
+    },
+    {
+        "id": "17",
+        "title": "Noticia de Prueba #17 - Internacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 17. Contiene información relevante sobre Internacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1514525253361-bee8718a300a?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-04-01",
+        "category": "Internacional",
+        "featured": false
+    },
+    {
+        "id": "18",
+        "title": "Noticia de Prueba #18 - Deportes",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 18. Contiene información relevante sobre Deportes.",
+        "image": "https:\/\/images.unsplash.com\/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-31",
+        "category": "Deportes",
+        "featured": false
+    },
+    {
+        "id": "19",
+        "title": "Noticia de Prueba #19 - Arte y Cultura",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 19. Contiene información relevante sobre Arte y Cultura.",
+        "image": "https:\/\/images.unsplash.com\/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-30",
+        "category": "Arte y Cultura",
+        "featured": false
+    },
+    {
+        "id": "20",
+        "title": "Noticia de Prueba #20 - Local",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 20. Contiene información relevante sobre Local.",
+        "image": "https:\/\/images.unsplash.com\/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-29",
+        "category": "Local",
+        "featured": false
+    },
+    {
+        "id": "21",
+        "title": "Noticia de Prueba #21 - Nacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 21. Contiene información relevante sobre Nacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-28",
+        "category": "Nacional",
+        "featured": false
+    },
+    {
+        "id": "22",
+        "title": "Noticia de Prueba #22 - Internacional",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 22. Contiene información relevante sobre Internacional.",
+        "image": "https:\/\/images.unsplash.com\/photo-1514525253361-bee8718a300a?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-27",
+        "category": "Internacional",
+        "featured": false
+    },
+    {
+        "id": "23",
+        "title": "Noticia de Prueba #23 - Deportes",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 23. Contiene información relevante sobre Deportes.",
+        "image": "https:\/\/images.unsplash.com\/photo-1459749411177-042180ce673c?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-26",
+        "category": "Deportes",
+        "featured": false
+    },
+    {
+        "id": "24",
+        "title": "Noticia de Prueba #24 - Arte y Cultura",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 24. Contiene información relevante sobre Arte y Cultura.",
+        "image": "https:\/\/images.unsplash.com\/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-25",
+        "category": "Arte y Cultura",
+        "featured": false
+    },
+    {
+        "id": "25",
+        "title": "Noticia de Prueba #25 - Local",
+        "summary": "Este es el resumen detallado para la noticia de prueba número 25. Contiene información relevante sobre Local.",
+        "image": "https:\/\/images.unsplash.com\/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&q=80&w=800",
+        "date": "2026-03-24",
+        "category": "Local",
+        "featured": false
     }
 ]

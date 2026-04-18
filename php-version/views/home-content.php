@@ -8,13 +8,27 @@ require_once __DIR__ . '/../includes/functions.php';
 $config = load_data('radio_config');
 $all_news = load_data('radio_news');
 
-// Lógica de Filtrado
+// Lógica de Filtrado y Paginación
 $current_cat = $_GET['cat'] ?? 'Todas';
+$current_page = max(1, (int)($_GET['page'] ?? 1));
+$show_all = isset($_GET['show_all']) && $_GET['show_all'] == '1';
+$items_per_page = 10;
+
 $news = $all_news;
 if ($current_cat !== 'Todas') {
     $news = array_filter($all_news, function($n) use ($current_cat) {
         return strtolower($n['category']) === strtolower($current_cat);
     });
+}
+
+// Total antes de paginar
+$total_filtered_news = count($news);
+$total_pages = ceil($total_filtered_news / $items_per_page);
+
+// Aplicar Paginación si no es "Ver Todas"
+if (!$show_all) {
+    $offset = ($current_page - 1) * $items_per_page;
+    $news = array_slice($news, $offset, $items_per_page);
 }
 ?>
 <main id="main-content" class="pb-56 overflow-hidden">
@@ -104,38 +118,94 @@ if ($current_cat !== 'Todas') {
             <!-- GRID PRINCIPAL -->
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-16">
                 <!-- COLUMNA NOTICIAS (3/4) -->
-                <div class="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-12 h-fit">
-                    <?php if (empty($news)): ?>
-                        <div class="col-span-2 py-40 text-center glass rounded-[40px]">
-                            <p class="text-radio-gray text-sm font-black uppercase tracking-widest">No hay noticias en esta categoría</p>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php foreach ($news as $n): ?>
-                        <article 
-                            onclick="spaNavigate('<?php echo $n['id']; ?>')"
-                            class="group relative bg-[#0d0d0f] border border-white/5 rounded-[50px] overflow-hidden hover:border-latin-start/40 transition-all duration-700 cursor-pointer flex flex-col h-full shadow-2xl"
-                        >
-                            <div class="aspect-[16/10] overflow-hidden relative">
-                                <div class="absolute inset-0 bg-latin-start/0 group-hover:bg-latin-start/10 transition-colors z-10"></div>
-                                <img src="<?php echo $n['image']; ?>" alt="<?php echo $n['title']; ?>" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                <div class="lg:col-span-3">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 h-fit mb-16">
+                        <?php if (empty($news)): ?>
+                            <div class="col-span-2 py-40 text-center glass rounded-[40px]">
+                                <p class="text-radio-gray text-sm font-black uppercase tracking-widest">No hay noticias en esta categoría</p>
                             </div>
-                            <div class="p-10 flex flex-col flex-grow relative">
-                                <div class="flex justify-between items-center mb-6">
-                                    <span class="text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-white/5 text-white/60 border border-white/10"><?php echo $n['category']; ?></span>
-                                    <span class="text-[10px] font-bold text-radio-gray"><?php echo format_date($n['date']); ?></span>
+                        <?php endif; ?>
+                        
+                        <?php foreach ($news as $n): ?>
+                            <article 
+                                onclick="spaNavigate('<?php echo $n['id']; ?>')"
+                                class="group relative bg-[#0d0d0f] border border-white/5 rounded-[50px] overflow-hidden hover:border-latin-start/40 transition-all duration-700 cursor-pointer flex flex-col h-full shadow-2xl"
+                            >
+                                <div class="aspect-[16/10] overflow-hidden relative">
+                                    <div class="absolute inset-0 bg-latin-start/0 group-hover:bg-latin-start/10 transition-colors z-10"></div>
+                                    <img src="<?php echo $n['image']; ?>" alt="<?php echo $n['title']; ?>" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
                                 </div>
-                                <h3 class="text-2xl font-black mb-5 leading-tight group-hover:text-latin-start transition-colors uppercase tracking-tight italic"><?php echo $n['title']; ?></h3>
-                                <p class="text-radio-gray text-sm line-clamp-2 mb-8 font-medium leading-relaxed flex-grow"><?php echo $n['summary']; ?></p>
-                                <div class="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
-                                    <span class="text-[10px] font-black uppercase tracking-widest text-white/40 group-hover:text-latin-start transition-all">Seguir Leyendo</span>
-                                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-latin-start transition-all">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-latin-start group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                <div class="p-10 flex flex-col flex-grow relative">
+                                    <div class="flex justify-between items-center mb-6">
+                                        <span class="text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-white/5 text-white/60 border border-white/10"><?php echo $n['category']; ?></span>
+                                        <span class="text-[10px] font-bold text-radio-gray"><?php echo format_date($n['date']); ?></span>
+                                    </div>
+                                    <h3 class="text-2xl font-black mb-5 leading-tight group-hover:text-latin-start transition-colors uppercase tracking-tight italic"><?php echo $n['title']; ?></h3>
+                                    <p class="text-radio-gray text-sm line-clamp-2 mb-8 font-medium leading-relaxed flex-grow"><?php echo $n['summary']; ?></p>
+                                    <div class="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                                        <span class="text-[10px] font-black uppercase tracking-widest text-white/40 group-hover:text-latin-start transition-all">Seguir Leyendo</span>
+                                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-latin-start transition-all">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-latin-start group-hover:translate-x-1 transition-transform"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                    <?php endforeach; ?>
+                            </article>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- PAGINACIÓN & VER TODAS -->
+                    <?php if ($total_filtered_news > 0): ?>
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/5">
+                            <!-- Botón Ver Todas -->
+                            <?php if (!$show_all && $total_filtered_news > $items_per_page): ?>
+                                <a href="index.php?cat=<?php echo $current_cat; ?>&show_all=1" 
+                                   onclick="event.preventDefault(); loadPage(this.href)"
+                                   class="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 hover:border-latin-start/40 hover:bg-white/10 text-[10px] font-black uppercase tracking-widest transition-all text-white group flex items-center gap-3">
+                                    <span>Ver todas las noticias</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+                                </a>
+                            <?php elseif ($show_all): ?>
+                                <a href="index.php?cat=<?php echo $current_cat; ?>&page=1" 
+                                   onclick="event.preventDefault(); loadPage(this.href)"
+                                   class="px-8 py-4 rounded-2xl bg-latin-start/20 border border-latin-start/40 hover:bg-latin-start/30 text-[10px] font-black uppercase tracking-widest transition-all text-latin-start group flex items-center gap-3">
+                                    <span>Volver a paginación</span>
+                                </a>
+                            <?php else: ?>
+                                <div></div>
+                            <?php endif; ?>
+
+                            <!-- Números de Página -->
+                            <?php if (!$show_all && $total_pages > 1): ?>
+                                <div class="flex items-center gap-2">
+                                    <!-- Prev -->
+                                    <?php if ($current_page > 1): ?>
+                                        <a href="index.php?cat=<?php echo $current_cat; ?>&page=<?php echo $current_page - 1; ?>" 
+                                           onclick="event.preventDefault(); loadPage(this.href)"
+                                           class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-latin-start text-radio-gray hover:text-latin-start transition-all">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                        <a href="index.php?cat=<?php echo $current_cat; ?>&page=<?php echo $i; ?>" 
+                                           onclick="event.preventDefault(); loadPage(this.href)"
+                                           class="w-12 h-12 flex items-center justify-center rounded-xl font-black text-sm transition-all <?php echo ($i === $current_page) ? 'bg-latin-start text-white shadow-lg shadow-latin-start/20' : 'bg-white/5 border border-white/10 text-radio-gray hover:border-latin-start hover:text-white'; ?>">
+                                            <?php echo $i; ?>
+                                        </a>
+                                    <?php endfor; ?>
+
+                                    <!-- Next -->
+                                    <?php if ($current_page < $total_pages): ?>
+                                        <a href="index.php?cat=<?php echo $current_cat; ?>&page=<?php echo $current_page + 1; ?>" 
+                                           onclick="event.preventDefault(); loadPage(this.href)"
+                                           class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-latin-start text-radio-gray hover:text-latin-start transition-all">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <!-- COLUMNA PUBLICIDAD (1/4) -->
