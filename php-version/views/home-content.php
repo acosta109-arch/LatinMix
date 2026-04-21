@@ -66,7 +66,7 @@ if (!$show_all) {
         
         <div class="z-10 w-full px-4">
             <h1 class="text-3xl sm:text-4xl md:text-[5rem] font-black tracking-tight leading-[1.1] md:leading-[1.2] italic py-8 uppercase selection:text-latin-start">
-                <span class="gradient-text">LATIN MIX</span> <br> <span class="gradient-text">¡LA VOZ DE TODOS!</span>
+                <span class="gradient-text">LATIN MIX</span> <br> <span class="gradient-text">¡LA VOZ QUE NOS UNE!</span>
             </h1>
             <p class="max-w-2xl mx-auto text-radio-gray text-sm md:text-xl mb-12 font-medium leading-relaxed px-4 italic">
                 Latin Mix es la emisora favorita de los latinos, con un balance musical e informativo que complace los más exquisitos gustos de los oyentes.
@@ -85,6 +85,110 @@ if (!$show_all) {
         .animate-spin-slow-reverse { animation: spin-slow 50s linear infinite reverse; }
     </style>
 
+    <!-- RADIO ÚTIL FM - SECCIÓN EN VIVO (7 PM - 9 PM) -->
+    <section id="radio-util" class="relative py-24 px-6 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-transparent to-blue-400/5 pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="glass p-8 md:p-16 rounded-[60px] border-white/10 shadow-3xl flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                
+                <!-- Visual del Programa -->
+                <div class="relative group w-full lg:w-1/3 aspect-square max-w-[320px]">
+                    <div class="absolute -inset-4 bg-blue-500/20 rounded-[50px] blur-2xl group-hover:bg-blue-500/30 transition-all duration-700"></div>
+                    <div class="relative h-full w-full bg-[#0d0d0f] rounded-[50px] border border-white/10 overflow-hidden flex items-center justify-center p-8 shadow-2xl">
+                        <div class="text-center">
+                            <i class="bi bi-broadcast text-7xl text-blue-500 mb-6 block animate-pulse"></i>
+                            <h4 class="text-xs font-black uppercase tracking-[0.4em] text-radio-gray">Radio Útil FM</h4>
+                        </div>
+                        
+                        <!-- Pulsing Live Badge -->
+                        <div class="absolute top-6 left-6 flex items-center gap-2">
+                             <span class="flex h-2 w-2 relative">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                             </span>
+                             <span class="text-[9px] font-black uppercase tracking-widest text-white/80">EN VIVO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info y Player -->
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="flex items-center justify-center lg:justify-start gap-4 mb-6">
+                        <div class="w-10 h-[2px] bg-blue-500"></div>
+                        <span class="text-xs font-black uppercase tracking-[0.4em] text-blue-500">Transmisión Especial</span>
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 tracking-tighter uppercase italic leading-none">
+                        Sintoniza <br> <span class="text-blue-500">Radio Útil FM</span>
+                    </h2>
+                    
+                    <p class="text-radio-gray text-lg mb-10 leading-relaxed font-medium max-w-xl">
+                        No te pierdas nuestra programación estelar en vivo de <span class="text-white font-bold">7:00 PM a 9:00 PM</span>. Conectamos contigo a través de la red de Radio Útil FM.
+                    </p>
+
+                    <!-- Player Interface -->
+                    <div class="flex flex-col sm:flex-row items-center gap-8 p-4 bg-white/5 rounded-[30px] border border-white/5 backdrop-blur-md" 
+                         x-data="{ 
+                            playingUtil: false, 
+                            playerUtil: null,
+                            streamUrl: 'https://shoutcast.tmcreativos.com/proxy/radioutil?mp=/stream',
+                            init() {
+                                window.utilPlayer = this;
+                            },
+                            toggle() {
+                                if(!this.playerUtil) {
+                                    this.playerUtil = new Audio(this.streamUrl);
+                                }
+                                if(this.playingUtil) {
+                                    this.playerUtil.pause();
+                                    this.playingUtil = false;
+                                } else {
+                                    // Pausar el player principal si está sonando
+                                    if(window.radioPlayer && typeof window.radioPlayer.toggle === 'function' && window.radioPlayer.isPlaying) {
+                                        window.radioPlayer.toggle();
+                                    }
+                                    this.playerUtil.play();
+                                    this.playingUtil = true;
+                                }
+                            }
+                         }">
+                        
+                        <button @click="toggle()" 
+                                class="w-16 h-16 rounded-full bg-blue-500 text-black flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-lg shadow-blue-500/20 group">
+                            <template x-if="!playingUtil">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="ml-1"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                            </template>
+                            <template x-if="playingUtil">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                            </template>
+                        </button>
+
+                        <div class="text-left flex-1">
+                            <div class="flex items-center gap-3">
+                                <span class="text-sm font-black uppercase italic text-white tracking-tight" x-text="playingUtil ? 'Escuchando en Vivo' : 'Escuchar Ahora'"></span>
+                                <div x-show="playingUtil" class="flex items-end gap-1 h-3">
+                                    <div class="w-1 bg-blue-500 animate-eq-1 h-1/2"></div>
+                                    <div class="w-1 bg-blue-400 animate-eq-2 h-full"></div>
+                                    <div class="w-1 bg-blue-500 animate-eq-3 h-3/4"></div>
+                                </div>
+                            </div>
+                            <p class="text-[10px] font-bold text-radio-gray uppercase tracking-widest mt-1">streaming.radioutilfm.com</p>
+                        </div>
+
+                        <div class="hidden sm:flex items-center gap-4 px-8 border-l border-white/10">
+                            <div class="text-right">
+                                <span class="block text-[9px] font-black text-gray-500 uppercase tracking-widest mb-1">Frecuencia</span>
+                                <span class="text-xs font-black text-white italic">DIGITAL HD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- NOTICIAS + SIDEBAR LAYOUT -->
     <section id="noticias" class="py-20 px-2 md:px-6">
         <div class="max-w-7xl mx-auto">
@@ -102,7 +206,7 @@ if (!$show_all) {
                 <!-- FILTRO DE CATEGORIAS -->
                 <div class="flex flex-wrap gap-2 glass p-2 rounded-2xl">
                     <?php 
-                    $cats = ['Todas', 'Local', 'Nacional', 'Internacional', 'Deportes', 'Arte y Cultura'];
+                    $cats = ['Todas', 'Nacional/Local', 'Internacional', 'Economía', 'Sociedad', 'Cultura', 'Deportes', 'Opinión'];
                     foreach($cats as $cat): ?>
                         <a 
                             href="index.php?cat=<?php echo $cat; ?>" 

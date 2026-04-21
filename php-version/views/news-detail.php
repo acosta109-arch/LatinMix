@@ -60,7 +60,7 @@ if (!$current_news) {
                             "En Latin Mix, conectamos tus sentidos con la mejor información y el ritmo que define nuestra cultura."
                         </blockquote>
 
-                        <p>Mantente en sintonía para más actualizaciones sobre <?php echo $current_news['category']; ?> y todo lo que sucede en el mundo de la música latina. En Latin Mix, somos ¡LA VOZ DE TODOS!</p>
+                        <p>Mantente en sintonía para más actualizaciones sobre <?php echo $current_news['category']; ?> y todo lo que sucede en el mundo de la música latina. En Latin Mix, somos ¡LA VOZ QUE NOS UNE!</p>
                     </div>
 
                     <!-- Footer Noticia -->

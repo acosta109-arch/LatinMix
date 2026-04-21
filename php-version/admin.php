@@ -1195,13 +1195,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="space-y-2" x-data="{ 
                         open: false, 
-                        selected: 'Nacional',
+                        selected: 'Nacional/Local',
                         options: [
-                            { id: 'Nacional', label: 'NACIONAL', icon: 'bi-geo-alt-fill' },
+                            { id: 'Nacional/Local', label: 'NACIONAL/LOCAL', icon: 'bi-geo-alt-fill' },
                             { id: 'Internacional', label: 'INTERNACIONAL', icon: 'bi-globe-americas' },
-                            { id: 'Local', label: 'LOCAL', icon: 'bi-pin-map-fill' },
+                            { id: 'Economía', label: 'ECONOMÍA', icon: 'bi-bank' },
+                            { id: 'Sociedad', label: 'SOCIEDAD', icon: 'bi-people-fill' },
+                            { id: 'Cultura', label: 'CULTURA', icon: 'bi-palette-fill' },
                             { id: 'Deportes', label: 'DEPORTES', icon: 'bi-trophy-fill' },
-                            { id: 'Arte y Cultura', label: 'ARTE Y CULTURA', icon: 'bi-palette-fill' }
+                            { id: 'Opinión', label: 'OPINIÓN', icon: 'bi-chat-quote-fill' }
                         ]
                     }">
                         <label class="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Sección / Categoría</label>
@@ -1261,25 +1263,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Todas las Categorías</span>
                                 </div>
                                 <div class="h-px bg-white/5 mx-4"></div>
-                                <div @click="newsFilter = 'Nacional'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
+                                <div @click="newsFilter = 'Nacional/Local'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
                                     <i class="bi bi-geo-alt-fill text-yellow-500"></i>
-                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Nacional</span>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Nacional/Local</span>
                                 </div>
                                 <div @click="newsFilter = 'Internacional'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
                                     <i class="bi bi-globe-americas text-blue-400"></i>
                                     <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Internacional</span>
                                 </div>
-                                <div @click="newsFilter = 'Local'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
-                                    <i class="bi bi-pin-map-fill text-green-400"></i>
-                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Local</span>
+                                <div @click="newsFilter = 'Economía'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
+                                    <i class="bi bi-bank text-emerald-400"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Economía</span>
+                                </div>
+                                <div @click="newsFilter = 'Sociedad'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
+                                    <i class="bi bi-people-fill text-cyan-400"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Sociedad</span>
+                                </div>
+                                <div @click="newsFilter = 'Cultura'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
+                                    <i class="bi bi-palette-fill text-purple-400"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Cultura</span>
                                 </div>
                                 <div @click="newsFilter = 'Deportes'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
                                     <i class="bi bi-trophy-fill text-orange-400"></i>
                                     <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Deportes</span>
                                 </div>
-                                <div @click="newsFilter = 'Arte y Cultura'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
-                                    <i class="bi bi-palette-fill text-purple-400"></i>
-                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Arte y Cultura</span>
+                                <div @click="newsFilter = 'Opinión'; open = false" class="px-5 py-4 hover:bg-white/5 cursor-pointer flex items-center gap-3 transition-all">
+                                    <i class="bi bi-chat-quote-fill text-pink-400"></i>
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400">Opinión</span>
                                 </div>
                             </div>
                         </div>

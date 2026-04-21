@@ -23,7 +23,7 @@ if ($isAjax) {
 }
 
 // SEO Meta Dinámico
-$site_title = "LATIN MIX Radio | La Emisora #1 de Música Latina";
+$site_title = "LATIN MIX Radio";
 $site_description = "Sintoniza los mejores éxitos latinos, noticias de entretenimiento y streaming en vivo las 24 horas.";
 
 if (!empty($id_noticia)) {
@@ -337,16 +337,20 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
                         x-transition:enter-end="opacity-100 translate-y-0"
                         class="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 glass rounded-2xl p-4 shadow-2xl space-y-2"
                         x-cloak>
-                        <a href="index.php?cat=Local"
-                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Locales</a>
-                        <a href="index.php?cat=Nacional"
-                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Nacionales</a>
+                        <a href="index.php?cat=Nacional/Local"
+                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Nacional/Local</a>
                         <a href="index.php?cat=Internacional"
-                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Internacionales</a>
+                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Internacional</a>
+                        <a href="index.php?cat=Economía"
+                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Economía</a>
+                        <a href="index.php?cat=Sociedad"
+                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Sociedad</a>
+                        <a href="index.php?cat=Cultura"
+                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Cultura</a>
                         <a href="index.php?cat=Deportes"
                             class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Deportes</a>
-                        <a href="index.php?cat=Arte y Cultura"
-                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Arte y Cultura</a>
+                        <a href="index.php?cat=Opinión"
+                            class="block py-2 px-4 rounded-xl hover:bg-latin-start/20 hover:text-latin-start transition-all">Opinión</a>
                     </div>
                 </div>
 
@@ -391,11 +395,13 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
                 </button>
                 <div x-show="mobNews" x-collapse
                     class="w-full flex flex-col items-center mt-4 space-y-4 text-radio-gray text-xs">
-                    <a href="index.php?cat=Local" @click="mobileMenu = false">Locales</a>
-                    <a href="index.php?cat=Nacional" @click="mobileMenu = false">Nacionales</a>
-                    <a href="index.php?cat=Internacional" @click="mobileMenu = false">Internacionales</a>
+                    <a href="index.php?cat=Nacional/Local" @click="mobileMenu = false">Nacional/Local</a>
+                    <a href="index.php?cat=Internacional" @click="mobileMenu = false">Internacional</a>
+                    <a href="index.php?cat=Economía" @click="mobileMenu = false">Economía</a>
+                    <a href="index.php?cat=Sociedad" @click="mobileMenu = false">Sociedad</a>
+                    <a href="index.php?cat=Cultura" @click="mobileMenu = false">Cultura</a>
                     <a href="index.php?cat=Deportes" @click="mobileMenu = false">Deportes</a>
-                    <a href="index.php?cat=Arte y Cultura" @click="mobileMenu = false">Arte y Cultura</a>
+                    <a href="index.php?cat=Opinión" @click="mobileMenu = false">Opinión</a>
                 </div>
             </div>
 
@@ -491,7 +497,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
         </div>
         <div
             class="max-w-7xl mx-auto mt-32 pt-12 border-t border-white/5 text-center text-[10px] font-black uppercase tracking-[0.5em] text-radio-gray">
-            © 2026 <span class="gradient-text">LATIN MIX RADIO</span>. LA EMISORA MÁS POTENTE DEL CONTINENTE.
+            © 2026 <span class="gradient-text">LATIN MIX RADIO</span>.
         </div>
     </footer>
 
@@ -504,6 +510,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
             audio: null,
             showDetails: false,
             init() {
+                window.radioPlayer = this;
                 this.audio = new Audio('<?php echo $config['streamUrl']; ?>');
                 this.audio.volume = this.volume / 100;
                 
@@ -525,6 +532,10 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'
                     this.isPlaying = false;
                     localStorage.setItem('radio_paused', 'true');
                 } else {
+                    // Pausar Radio Útil si está sonando
+                    if(window.utilPlayer && typeof window.utilPlayer.toggle === 'function' && window.utilPlayer.playingUtil) {
+                        window.utilPlayer.toggle();
+                    }
                     this.audio.play().then(() => {
                         this.isPlaying = true;
                         localStorage.removeItem('radio_paused');
